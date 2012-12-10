@@ -1,6 +1,8 @@
 # Belt
 
-TODO: Write a gem description
+![Utility belt](http://upload.wikimedia.org/wikipedia/en/5/53/Utility-belt.jpg)
+
+Holy utility belt, Batman! A CLI server tasks with with Chef powers, DNS API integration, Capistrano integration and assorted goodness for managing servers.
 
 ## Installation
 
