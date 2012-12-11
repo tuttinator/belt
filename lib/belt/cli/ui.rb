@@ -35,7 +35,8 @@ module Belt
       # Nifty, right?
 
 
-      def self.line_display(text, colors = [])
+      def self.display(text, colors = [])
+        colors = colors.is_a? Array ? colors : [colors]
         case text
         when String
           colors.empty? ? print text : print -> { colors.each {|x| text = text.send(x) }; text;}.call
@@ -49,18 +50,8 @@ module Belt
         end
       end
 
-      def self.display(text, colors = [])
-        case text
-        when String
-          colors.empty? ? print text : print -> { colors.each {|x| text = text.send(x) }; text;}.call
-        when Symbol
-          colors.empty? ? print self.call(text) : 
-                          print lambda do
-                                  text = self.call(text)
-                                  colors.each {|x| text = text.send(x) }
-                                  text
-                                end.call
-        end
+      def self.line_display(text, colors = [])
+        self.display(text, colors)
         print "\n"
       end
 

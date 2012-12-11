@@ -3,6 +3,20 @@ require 'belt/core_ext'
 require 'belt/server_tools/combinator'
 
 module Belt
+
+  class Configuration
+    attr_accessor :aws_regions, :aws_access_key_id, :aws_secret_access_key, :zonomi_key
+  end
+  
+  class << self
+    attr_accessor :configuration
+  end
+
+  def self.configure
+    self.configuration ||= Configuration.new
+    yield(configuration)
+  end
+
   
 
   aws_credentials = YAML.load_file(File.dirname(__FILE__) + '/../config/aws_tools.yml').recursive_symbolize_keys!
@@ -17,8 +31,7 @@ module Belt
     })
 
 
-    def self.try_loading_config
 
-    end
+
 
 end

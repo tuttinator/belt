@@ -16,9 +16,12 @@ class App
   main do |domain_name, ip_address| 
     
 
-    display :welcome_banner, [ :bold, :yellow ]
-
-    
+    line_display :welcome_banner, [ :bold, :yellow ]
+    display "Pointing "
+    display domain_name, :blue 
+    display " to " 
+    display ip_address, :red 
+    display " ..."
     
     puts "Pointing " + domain_name.blue + " to " + ip_address.red + " ..."
 
