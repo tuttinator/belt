@@ -29,4 +29,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency('capistrano')
   gem.add_dependency('rvm-capistrano')
   gem.add_dependency('capistrano-ext')
+  gem.add_dependency('fog')
 end

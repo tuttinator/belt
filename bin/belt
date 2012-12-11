@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require "rubygems"
+require "bundler/setup"
 require 'optparse'
 require 'methadone'
 require 'belt'
@@ -8,12 +10,29 @@ class App
   include Methadone::Main
   include Methadone::CLILogging
 
-  main do # Add args you want: |like,so|
-    # your program code here
-    # You can access CLI options via
-    # the options Hash
+  include Belt::CLI::UI
+
+
+  main do |domain_name, ip_address| 
+    
+
+    display :welcome_banner, [ :bold, :yellow ]
+
+    
+    
+    puts "Pointing " + domain_name.blue + " to " + ip_address.red + " ..."
+
+    server_tools.set_ipaddress_for_a_record_for(domain_name, ip_address)
+
   end
 
+  version     '0.0.1alpha'
+  description 'Holy Utility Belt Batman!'
+  arg         :domain_name, :required
+  arg         :ip_address, :required
+
+  options['ip-address'] = '127.0.0.1'
+  on("-i IP_ADDRESS","--ip-address","IP Address",/^\d+\.\d+\.\d+\.\d+$/)
   # supplemental methods here
 
   # Declare command-line interface here
