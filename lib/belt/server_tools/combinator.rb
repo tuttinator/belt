@@ -1,12 +1,10 @@
 module Belt
-  require 'zonomi'
-  require 'fog'
-
-  require_relative 'chef/client'
-  require_relative 'chef/node'
-
-
   module ServerTools
+
+
+    require_relative 'chef/client'
+    require_relative 'chef/node'
+
 
     class Combinator
 

@@ -1,6 +1,12 @@
+# external dependencies
+require 'zonomi'
+require 'fog'
+
+# internal dependencies
 require 'belt/version'
 require 'belt/core_ext'
 require 'belt/server_tools/combinator'
+
 
 module Belt
 
@@ -17,7 +23,7 @@ module Belt
     yield(configuration)
   end
 
-  
+
 
   aws_credentials = YAML.load_file(File.dirname(__FILE__) + '/../config/aws_tools.yml').recursive_symbolize_keys!
   zonomi = YAML.load_file(File.dirname(__FILE__) + '/../config/zonomi.yml').recursive_symbolize_keys!
